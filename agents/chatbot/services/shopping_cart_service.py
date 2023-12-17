@@ -1,6 +1,6 @@
 import pandas as pd
 from ..utils.singleton import Singleton
-from ..models.shopping_cart import ShoppingCart, ShoppingCartItem
+from ..models.shopping_cart import ShoppingCart
 
 
 @Singleton

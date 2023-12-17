@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from agents import ChatBotAgent
-from agents.chatbot import UserMessage
+from agents.chatbot import UserMessage, KnowledgeBase, LearningElement, Feedback
 
 import random
 
@@ -36,21 +36,39 @@ def greeting():
         What is your question?
         '''.format(chatbot.get_name(), features),
     ])
-    return jsonify({'content': greating}), 200
+    return jsonify({'data': {'message': greating}}), 200
 
 
 @app.route("/post", methods=['POST'])
 def post():
     request_data = request.get_json()
     user_message = request_data['message']
-    user_id = request_data['id']
+    user_id = request_data['user_id']
     if user_id is None:
         user_id = 1
         print(
             'User ID not found, used hardcoded user_id for demonstration = {}', user_id)
 
-    msg = chatbot.handle(UserMessage(user_message, user_id))
-    return jsonify({'content': msg}), 200
+    response = chatbot.handle_request(UserMessage(user_message, user_id))
+    return jsonify({'data': response}), 200
+
+
+@app.route("/feedback", methods=['POST'])
+def feedback():
+    request_data = request.get_json()
+    chatbot.handle_feedback(
+        Feedback(request_data['id'], request_data['value']))
+    return '', 204
+
+
+@app.route("/feedback-data", methods=['GET'])
+def feedback_data():
+    return KnowledgeBase.instance().feedback_data, 200
+
+
+@app.route("/learning-data", methods=['GET'])
+def learning_data():
+    return LearningElement.instance().learning_data, 200
 
 
 if __name__ == "__main__":
