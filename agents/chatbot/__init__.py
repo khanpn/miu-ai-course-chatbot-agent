@@ -1,2 +1,2 @@
 from .agent import ChatBotAgent
-from .user_message import UserMessage
+from .models.user_message import UserMessage

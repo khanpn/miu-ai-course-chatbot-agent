@@ -1,6 +1,6 @@
 import regex as re
 import pandas as pd
-import random
+from .models.rule import Rule
 from .utils.singleton import Singleton
 from .services.product_service import ProductService
 
@@ -48,15 +48,15 @@ class RuleMatcher:
         return matched_rules
 
     def __matches_by_pattern__(self, sentence, rule):
-        p = re.compile(str(rule.__dict__['pattern']))
+        p = re.compile(str(rule.pattern))
         m = p.match(sentence.lower())
         return m is not None
 
     def __matches_by_tokens__(self, message, rule):
         token_matching = rule.token_matching
-        main_tokens = token_matching['main']
-        linked_tokens = token_matching['linked']
-        weights = token_matching['weights'].split('-')
+        main_tokens = token_matching.main
+        linked_tokens = token_matching.linked
+        weights = token_matching.weights.split('-')
         main_weight = 0
         linked_weight = 0
         for i in range(0, len(main_tokens)):
@@ -82,26 +82,3 @@ class RuleMatcher:
             if len(numbers) > 0:
                 extracted_data['quantity'] = int(numbers[0])
         return extracted_data
-
-
-class Rule:
-    def __init__(self, name, description, pattern, token_matching, category, command, success_reply_templates, failed_reply_templates, extracted_data=None):
-        self.name = name
-        self.description = description
-        self.pattern = pattern
-        self.token_matching = token_matching
-        self.category = category
-        self.command = command
-        self.success_reply_templates = success_reply_templates
-        self.failed_reply_templates = failed_reply_templates
-        self.extracted_data = extracted_data
-
-    def from_series(s, extracted_data=None):
-        return Rule(name=s['name'], description=s['description'], pattern=s['pattern'], token_matching=s['token_matching'],
-                    category=s['category'], command=s['command'], success_reply_templates=s['success_reply_templates'], failed_reply_templates=s['failed_reply_templates'], extracted_data=extracted_data)
-
-    def get_random_success_reply_templates(self):
-        return random.choice(self.success_reply_templates)
-
-    def get_random_failed_reply_templates(self):
-        return random.choice(self.failed_reply_templates)
