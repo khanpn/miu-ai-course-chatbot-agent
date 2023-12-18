@@ -19,8 +19,7 @@ class LearningElement:
         state.percept = percept
 
         possible_actions = list(map(lambda rule: Action(rule=rule), rules))
-        if len(possible_actions) == 0:
-            possible_actions.append(Action(user_message))
+        possible_actions.append(Action(user_message))
         state.possible_actions = possible_actions
 
     def receive_feedback(self, percept, action_name, new_reward):

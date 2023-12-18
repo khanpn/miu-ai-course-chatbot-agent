@@ -3,6 +3,7 @@ from .learning_element import LearningElement
 from .knowledge_base import KnowledgeBase
 from .models import Action, ActionReward, State
 import random
+import os
 
 
 @Singleton
@@ -17,7 +18,8 @@ class ProblemGenerator:
             obj, action_rewards), reverse=True)
 
         if len(sorted_actions) > 1:
-            state.generate_feedback = random.randint(0, 100) < 50
+            state.generate_feedback = random.randint(
+                0, 100) <= int(os.environ['FEEDBACK_GENERATION_RATE'])
 
         return sorted_actions[0]
 
