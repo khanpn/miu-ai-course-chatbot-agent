@@ -1,4 +1,6 @@
-
+### MacOS ###
+**/.DS_Store
+.DS_Store
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -49,4 +51,5 @@ perceptron.py
 /__pycache__/
 *.pkl
 
-
+### Python Cache ###
+**/__pycache__/
