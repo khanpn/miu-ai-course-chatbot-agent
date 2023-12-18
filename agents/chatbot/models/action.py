@@ -18,6 +18,10 @@ class Action:
         return {'message': response, 'feedback_id': feedback_id}
 
     @property
+    def rule(self):
+        return self._rule
+
+    @property
     def name(self):
         if self._rule:
             return self._rule.name

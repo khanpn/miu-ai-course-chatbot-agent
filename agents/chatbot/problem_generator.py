@@ -27,4 +27,4 @@ class ProblemGenerator:
         for ar in action_rewards:
             if ar.action_name == action.name:
                 return ar.reward
-        return 0
+        return 1 if action.rule else 0

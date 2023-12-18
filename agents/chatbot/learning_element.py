@@ -15,6 +15,7 @@ class LearningElement:
     def make_knowledge(self, user_message: UserMessage):
         rules = RuleMatcher.instance().match_rules(user_message)
         state: State = KnowledgeBase.instance().current_state
+        state.generate_feedback = False
         percept = hashlib.sha256(user_message.message.encode()).hexdigest()
         state.percept = percept
 
