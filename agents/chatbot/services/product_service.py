@@ -1,13 +1,14 @@
 import pandas as pd
 from ..utils.singleton import Singleton
 from ..models.product import Product
+import os
 
 
 @Singleton
 class ProductService:
 
     def __init__(self):
-        self.products = pd.read_json('data/products.json')
+        self.products = pd.read_json(os.environ['PRODUCT_DATA_FILE'])
 
     def get_product_by_name(self, product_name):
         df = self.products[self.products.name.str.lower()

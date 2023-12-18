@@ -3,12 +3,13 @@ import pandas as pd
 from .models.rule import Rule
 from .utils.singleton import Singleton
 from .services.product_service import ProductService
+import os
 
 
 @Singleton
 class RuleLoader:
     def __init__(self):
-        self.rules_file = 'data/rules.json'
+        self.rules_file = os.environ['RULES_FILE']
 
     def load_rules(self):
         return pd.read_json(self.rules_file)

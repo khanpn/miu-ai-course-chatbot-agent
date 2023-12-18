@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, jsonify
 from agents import ChatBotAgent
 from agents.chatbot import UserMessage, KnowledgeBase, LearningElement, Feedback
-
 import random
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 app = Flask(__name__)
