@@ -1,5 +1,5 @@
 ### MacOS ###
-**/.DS_Store
+**.DS_Store
 .DS_Store
 HELP.md
 target/
@@ -48,8 +48,8 @@ build/
 *.zip
 perceptron.py
 /movie_dialog/
-/__pycache__/
 *.pkl
 
 ### Python Cache ###
-**/__pycache__/
+**/__pycache__
+.spyproject/

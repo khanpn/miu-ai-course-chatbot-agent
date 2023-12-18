@@ -1,6 +1,6 @@
 from ..commands import Commands
 from .rule import Rule
-from ..embedded_model.langchain_helper import get_qa_chain
+from ..embedded_model.qa_chain import QAChain
 
 
 class Action:
@@ -13,8 +13,7 @@ class Action:
             func = getattr(Commands, self._rule.command)
             response = func(self._rule)
         else:
-            chain = get_qa_chain()
-            response = chain(self._user_message.message)['result']
+            response = QAChain.instance().chain(self._user_message.message)
 
         return {'message': response, 'feedback_id': feedback_id}
 
