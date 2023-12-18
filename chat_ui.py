@@ -9,7 +9,7 @@ load_dotenv()
 
 
 app = Flask(__name__)
-chatbot = ChatBotAgent(name='Stupid Chatbot')
+chatbot = ChatBotAgent(name='G3')
 
 
 @app.route("/")
@@ -19,21 +19,19 @@ def home():
 
 @app.route("/greeting")
 def greeting():
-    features = '''<ol>
+    features = '''<ul>
         <li>Find product</li>
         <li>Add/remove product into/from shopping cart</li>
         <li>Checkout order</li>
         <li>Q/A customer service</li>
-    </ol>'''
+    </ul>'''
     greating = random.choice([
         '''Hi, 
-        I am {}. <br/>
-        I am your assistant now. <br/>
+        I am {}, an intelligent agent. <br/><br/>
         I can support you in following topics: <br/> {} <br/>
-        Please ask me everything!'''.format(chatbot.get_name(), features),
+        Please ask me!'''.format(chatbot.get_name(), features),
 
-        '''Hello, my name is {}. <br/>
-        I am an intelligent bot assistant.<br/>
+        '''Hello, I am {}, an intelligent agent.<br/><br/>
         You can ask me any question in following topics: <br/>
         {} <br/>
         What is your question?

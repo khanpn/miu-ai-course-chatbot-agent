@@ -8,3 +8,8 @@ tiktoken==0.4.0
 faiss-cpu==1.7.4
 protobuf~=3.19.0
 InstructorEmbedding==1.0.1
+requests==2.27.1
+huggingface
+transformers
+torch
+sentence_transformers

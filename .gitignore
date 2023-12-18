@@ -39,6 +39,7 @@ build/
 /.vscode/
 *.emb
 /chatbotapp/
+.env
 
 
 ### Anaconda ###
