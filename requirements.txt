@@ -13,3 +13,4 @@ huggingface
 transformers
 torch
 sentence_transformers
+inflect

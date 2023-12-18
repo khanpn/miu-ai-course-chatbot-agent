@@ -26,7 +26,7 @@ def greeting():
         <li>Q/A customer service</li>
     </ul>'''
     greating = random.choice([
-        '''Hi, 
+        '''Hi,
         I am {}, an intelligent agent. <br/><br/>
         I can support you in following topics: <br/> {} <br/>
         Please ask me!'''.format(chatbot.get_name(), features),
@@ -74,3 +74,4 @@ def learning_data():
 
 if __name__ == "__main__":
     app.run()
+    #esponse = chatbot.handle_request(UserMessage("find apples", 1))

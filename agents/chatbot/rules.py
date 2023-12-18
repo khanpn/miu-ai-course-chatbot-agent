@@ -19,13 +19,12 @@ class RuleLoader:
 class RuleMatcher:
     def __init__(self):
         self.rules = RuleLoader.instance().load_rules()
-        self.product_names = ProductService.instance(
-        ).products['name'].to_list()
 
     def match_rules(self, user_message):
         matched_rules = []
         initial_rule_data = {}
-        for product_name in self.product_names:
+        product_names = ProductService.instance().tokenized_names()
+        for product_name in product_names:
             if product_name.lower() in user_message.get_message().lower():
                 initial_rule_data['product_name'] = product_name
 
