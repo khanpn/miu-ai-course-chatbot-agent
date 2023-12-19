@@ -72,6 +72,11 @@ def learning_data():
     return LearningElement.instance().learning_data, 200
 
 
+@app.route("/percept-data", methods=['GET'])
+def percept_data():
+    return KnowledgeBase.instance().percept_data, 200
+
+
 if __name__ == "__main__":
     app.run()
     #esponse = chatbot.handle_request(UserMessage("find apples", 1))

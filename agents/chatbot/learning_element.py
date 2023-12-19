@@ -19,7 +19,8 @@ class LearningElement:
         percept = hashlib.sha256(user_message.message.encode()).hexdigest()
         state.percept = percept
 
-        possible_actions = list(map(lambda rule: Action(rule=rule), rules))
+        possible_actions = list(map(lambda rule: Action(
+            user_message=user_message, rule=rule), rules))
         possible_actions.append(Action(user_message))
         state.possible_actions = possible_actions
 

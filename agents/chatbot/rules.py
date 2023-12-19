@@ -25,7 +25,7 @@ class RuleMatcher:
         initial_rule_data = {}
         product_names = ProductService.instance().tokenized_names()
         for product_name in product_names:
-            if product_name.lower() in user_message.get_message().lower():
+            if product_name.lower() in user_message.message.lower():
                 initial_rule_data['product_name'] = product_name
 
         matched_rules.extend(self.__matches_rules__(
@@ -39,10 +39,10 @@ class RuleMatcher:
                 user_message, initial_rule_data)
             rule = Rule.from_series(rules.iloc[i], extracted_rule_data)
             if not pd.isna(rule.pattern):
-                if self.__matches_by_pattern__(user_message.get_message(), rule):
+                if self.__matches_by_pattern__(user_message.message, rule):
                     matched_rules.append(rule)
             elif rule.token_matching:
-                if self.__matches_by_tokens__(user_message.get_message(), rule):
+                if self.__matches_by_tokens__(user_message.message, rule):
                     matched_rules.append(rule)
 
         return matched_rules
@@ -72,7 +72,7 @@ class RuleMatcher:
         return True
 
     def __extract_data_for_rule(self, user_message, initial_rule_data=None):
-        extracted_data = {'user_id': user_message.get_user_id()}
+        extracted_data = {'user_id': user_message.user_id}
         if initial_rule_data.get('product_name'):
             product = ProductService.instance().get_product_by_name(
                 initial_rule_data['product_name'])
