@@ -1,6 +1,6 @@
 from ..commands import Commands
 from .rule import Rule
-from ..embedded_model.qa_chain import QAChain
+from ..embedding_model.qa_chain import QAChain
 from .user_message import UserMessage
 
 

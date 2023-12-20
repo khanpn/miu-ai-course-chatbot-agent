@@ -9,7 +9,7 @@ load_dotenv()
 
 instructor_embeddings = HuggingFaceInstructEmbeddings(
     model_name="hkunlp/instructor-large")
-vectordb_file_path = os.environ['EMBEDDED_MODEL_VECTOR_DB_DIRECTORY']
+vectordb_file_path = os.environ['EMBEDDINGS_VECTOR_DB_DIRECTORY']
 
 
 def create_vector_db():

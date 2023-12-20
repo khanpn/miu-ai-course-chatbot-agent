@@ -13,7 +13,7 @@ llm = GooglePalm(google_api_key=os.environ['GOOGLE_API_KEY'], temperature=0.1)
 # # Initialize instructor embeddings using the Hugging Face model
 instructor_embeddings = HuggingFaceInstructEmbeddings(
     model_name="hkunlp/instructor-large")
-vectordb_file_path = os.environ['EMBEDDED_MODEL_VECTOR_DB_DIRECTORY']
+vectordb_file_path = os.environ['EMBEDDINGS_VECTOR_DB_DIRECTORY']
 
 
 def get_qa_chain():
