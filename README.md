@@ -1,4 +1,4 @@
-# Intelligent-Agent-Chatbots
+# Intelligent-Agent-Chatbot
 
 [Harnessing the power of LLM - Prompt Engineering]
 
@@ -14,21 +14,32 @@
 	Harnessing the inductive learning capabilities of NLP through the power of deep learning that allows agents to more or 
 	less learn and improve based on experience. These give a personalized feel to customers and better accuracy.
 	
-The winning team: 
+## Agent Architecture
+![Agent Architecture](images/chatbot-agent.png?raw=true "Agent Architecture")
 
-	1. Geoffrey Duncan Opiyo
-	2. Phuong Khanh Nguyen
-	3. Deo Mugabe
-	4. Duc Phi Ngo
+## Demonstration
+![Demo 1](images/demo1.png?raw=true "Demo 1")
+![Demo 2](images/demo2.png?raw=true "Demo 2")
+![Demo 3](images/demo3.png?raw=true "Demo 3")
+
+## Team Information​
+ 
+ Professor: `Dr. Emdad Khan​`
+ 
+ Students:
+
+    * Geoffrey Duncan Opiyo
+	* Phuong Khanh Nguyen
+	* Deo Mugabe
+	* Duc Phi Ngo
 
 ## How to run the program (packages to install)
 	
-	1. python -m venv dunky  -> To create virtual environment
-	2. cd /dunky -> Change directory to the newly created virtual envornment
-	3. Scripts/activate -> To activate virtual environment in Windows
-	4. source/activate -> To activate virtual environment on MacBook
-	5. pip install "openai<1.0.0" langchain
-	6. pip install chromadb
-	7. Create a .env file inside the root directory of the project
-	8. Get OpenAI api_key, put it inside .env file [file content]: GOOGLE_API_KEY= <your key>
-	
+	1. Navigate to the project root directory
+	2. pip install -f requirements.txt
+	3. Update environment variables in .env file
+	4. Run chat_ui.py
+
+## LLM Prompting
+
+* https://github.com/DegraBest/Prompt_Engineering

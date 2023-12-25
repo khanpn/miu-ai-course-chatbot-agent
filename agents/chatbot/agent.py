@@ -5,11 +5,11 @@ from .critic import Critic
 
 class ChatBotAgent:
     def __init__(self, name):
-        self.name = name
-        self.performance_element = PerformanceElement.instance()
+        self._name = name
+        self._performance_element = PerformanceElement.instance()
 
     def handle_request(self, user_message):
-        action = self.performance_element.select_action(user_message)
+        action = self._performance_element.select_action(user_message)
         if action is not None:
             kb = KnowledgeBase.instance()
 
@@ -25,5 +25,6 @@ class ChatBotAgent:
     def handle_feedback(self, feedback):
         Critic.instance().handle_feedback(feedback)
 
-    def get_name(self):
-        return self.name
+    @property
+    def name(self):
+        return self._name

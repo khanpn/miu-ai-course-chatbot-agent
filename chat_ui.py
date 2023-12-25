@@ -22,20 +22,19 @@ def greeting():
     features = '''<ul>
         <li>Find product</li>
         <li>Add/remove product into/from shopping cart</li>
-        <li>Checkout order</li>
         <li>Q/A customer service</li>
     </ul>'''
     greating = random.choice([
         '''Hi,
         I am {}, an intelligent agent. <br/><br/>
         I can support you in following topics: <br/> {} <br/>
-        Please ask me!'''.format(chatbot.get_name(), features),
+        Please ask me!'''.format(chatbot.name, features),
 
         '''Hello, I am {}, an intelligent agent.<br/><br/>
         You can ask me any question in following topics: <br/>
         {} <br/>
         What is your question?
-        '''.format(chatbot.get_name(), features),
+        '''.format(chatbot.name, features),
     ])
     return jsonify({'data': {'message': greating}}), 200
 
@@ -79,4 +78,3 @@ def percept_data():
 
 if __name__ == "__main__":
     app.run()
-    #esponse = chatbot.handle_request(UserMessage("find apples", 1))
